@@ -7,11 +7,15 @@ import java.util.List;
 public class MIU {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
 		MIU test = new MIU();
-		System.out.println(test.next_states("miii").toString());
+		System.out.println(test.next_states("mi").toString());
+		System.out.println(test.next_states("miu").toString());
+		System.out.println(test.next_states("mui").toString());
+		System.out.println(test.next_states("miiii").toString());
+		System.out.println(test.next_states("muuii").toString());
+		System.out.println(test.next_states("muuui").toString());
 		
-
 
 		
 		
@@ -32,10 +36,11 @@ public class MIU {
 		//System.out.println(start);
 		if (next.charAt(next.length() - 1) == 'i') {
 			next = next.append("u");
+			list.add(next.toString());
 		}
 
 		//System.out.println(next.toString());
-list.add(next.toString());
+
 		return list;
 
 	}
