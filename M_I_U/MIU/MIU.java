@@ -7,39 +7,43 @@ import java.util.List;
 public class MIU {
 
 	public static void main(String[] args) {
-	
-		MIU test = new MIU();
-		System.out.println(test.next_states("mi").toString());
-		System.out.println(test.next_states("miu").toString());
-		System.out.println(test.next_states("mui").toString());
-		System.out.println(test.next_states("miiii").toString());
-		System.out.println(test.next_states("muuii").toString());
-		System.out.println(test.next_states("muuui").toString());
-		
 
-		
-		
+		MIU test = new MIU();
+		System.out.println(test.next_states("mii"));
+		System.out.println(test.next_states("miu"));
+		System.out.println(test.next_states("mui"));
+		System.out.println(test.next_states("miiii"));
+		System.out.println(test.next_states("muuii"));
+		System.out.println(test.next_states("muuui"));
+		System.out.println(test.next_states("muuuuuu"));
+		System.out.println(test.next_states("miiiiii"));
+
 	}
+
 	public List<String> next_states(String str) {
 		List<String> list = new ArrayList<String>();
 		list.addAll(rule_1(str));
 		list.addAll(rule_2(str));
 		list.addAll(rule_3(str));
 		list.addAll(rule_4(str));
+		// System.out.println("1  "+rule_1(str));
+		// System.out.println("2  "+rule_2(str));
+		// System.out.println("3  "+rule_3(str));
+		// System.out.println("4  "+rule_4(str));
 		return list;
-		
+
 	}
 
 	public List<String> rule_1(String start) {
 		List<String> list = new ArrayList<String>();
 		StringBuilder next = new StringBuilder(start);
-		//System.out.println(start);
+		// System.out.println(start);
 		if (next.charAt(next.length() - 1) == 'i') {
 			next = next.append("u");
 			list.add(next.toString());
 		}
 
-		//System.out.println(next.toString());
+		// System.out.println(next.toString());
 
 		return list;
 
@@ -48,11 +52,11 @@ public class MIU {
 	public List<String> rule_2(String start) {
 		List<String> list = new ArrayList<String>();
 		StringBuilder next = new StringBuilder(start);
-		//System.out.println(start);
+		// System.out.println(start);
 		next.deleteCharAt(0);
 		next = next.append(next);
 		next = next.insert(0, 'm');
-	//	System.out.println(next.toString());
+		// System.out.println(next.toString());
 		list.add(next.toString());
 		return list;
 
@@ -101,7 +105,7 @@ public class MIU {
 					start_b.replace(x, x + 2, "au");
 					String temp = next.toString().replace('a', 'u');
 					list.add(temp);
-					
+
 				}
 
 			}
