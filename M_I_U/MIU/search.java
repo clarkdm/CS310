@@ -8,22 +8,67 @@ public class search {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		search test = new search();
-		//System.out.println(test.breadth_first("miiii"));
-		//System.out.println(test.breadth_first("mii"));
-		//System.out.println(test.breadth_first("miiiiiiii"));
-		
-		
-		System.out.println(test.depthLimited("miiiiiiii", 3));
+		// System.out.println(test.breadthFirstSearch("miiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"));
+		// System.out.println(test.breadthFirstSearch_Path_Checking("miiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"));
+		// System.out.println(test.breadthFirstSearch("miiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"));
+		// System.out.println(test.iterativeDeepening("muiiiiiiiiiiiiiiu"));
+		System.out.println(test
+				.iterativeDeepening_Path_Checking("muiiiiiiiiiiiiiiu"));
+		// System.out.println(test.iterativeDeepening("muiiiiiiiiiiiiiiu"));
 	}
 
 	private MIU miu = new MIU();
 
-	public List<String> breadth_first(String target) {
-
+	public List<String> breadthFirstSearch_Path_Checking(String target) {
+		int index = 0;
 		String start = "mi";
 		boolean find = false;
 		List<List<String>> temp = extendPath(start);
+		index++;
+		List<String> visited = new ArrayList<String>();
+		System.out.println("target  =  " + target);
+		if (start.equals(target)) {
+			visited.add(start);
+			find = true;
+			System.out.println(start);
+		}
 
+		while (!find) {
+			// System.out.println(temp.toString());
+			if (visited.contains(temp.get(0).get(temp.get(0).size() - 1))) {
+				temp.remove(0);
+			} else {
+				visited.add(temp.get(0).get(temp.get(0).size() - 1));
+				if (!temp.get(0).get(temp.get(0).size() - 1).equals(target)) {
+					List<String> x = temp.get(0);
+					temp.remove(0);
+					temp.addAll(temp.size(), extendPath(x));
+					index++;
+				} else {
+					System.out.println("length of the path : "
+							+ temp.get(0).size());
+					System.out
+							.println("the number of times extendPath is called : "
+									+ temp.size());
+					System.out.println("size of the agenda : " + index);
+
+					find = true;
+					return temp.get(0);
+
+				}
+
+			}
+		}
+		return null;
+
+	}
+
+	public List<String> breadthFirstSearch(String target) {
+		int index = 0;
+		String start = "mi";
+		boolean find = false;
+		List<List<String>> temp = extendPath(start);
+		index++;
 		System.out.println("target  =  " + target);
 		if (start.equals(target)) {
 			find = true;
@@ -36,16 +81,23 @@ public class search {
 				List<String> x = temp.get(0);
 				temp.remove(0);
 				temp.addAll(temp.size(), extendPath(x));
-				
+				index++;
 			} else {
+				System.out
+						.println("length of the path : " + temp.get(0).size());
+				System.out
+						.println("the number of times extendPath is called : "
+								+ temp.size());
+				System.out.println("size of the agenda : " + index);
+
 				find = true;
 				return temp.get(0);
-//				System.out.println(temp.get(0));
+
 			}
 
 		}
+
 		return null;
-//		System.out.println(temp.size());
 
 	}
 
@@ -79,22 +131,20 @@ public class search {
 		return x;
 
 	}
-	
-	
-	
-	public List<String> depthLimited(String target, int d) {
+
+	public List<String> depthLimitedDFS(String target, int d) {
 		int comps = 0;
-		d=d+2;
+		d = d + 2;
 		String start = "mi";
 		miu = new MIU();
 		boolean find = false;
-		boolean not_find = true;
+
 		List<List<String>> temp = extendPath(start);
 
-		System.out.println("target  =  " + target);
+		// System.out.println("target  =  " + target);
 		if (start.equals(target)) {
 			find = true;
-			System.out.println(start);
+
 		}
 		comps++;
 
@@ -107,19 +157,24 @@ public class search {
 				if (!(temp.size() == 0)) {
 
 					if (temp.get(0).size() < d) {
-						comps++;
+
 						if (!temp.get(0).get(temp.get(0).size() - 1)
 								.equals(target)) {
 							List<String> x = temp.get(0);
 							temp.remove(0);
 							temp.addAll(0, extendPath(x));
-
+							comps++;
 						} else {
 							find = true;
-							not_find = false;
+							System.out.println("length of the path : "
+									+ temp.get(0).size());
+							System.out
+									.println("the number of times extendPath is called : "
+											+ comps);
+							System.out.println("size of the agenda : "
+									+ temp.size());
 							return temp.get(0);
-							//System.out.println(temp.get(0) + "   comps : "
-								//	+ comps);
+
 						}
 					} else {
 						temp.remove(0);
@@ -129,16 +184,107 @@ public class search {
 				}
 			}
 		}
-		if (!not_find) {
-			System.out.println(temp.get(0).size());
-		}
+		System.out.println("the number of times extendPath is called : "
+				+ comps);
 		return null;
 
 	}
 
+	public List<String> iterativeDeepening(String goalString) {
 
-	
-	
-	
+		int index = 0;
+		List<String> temp = null;
+		while (temp == null) {
+
+			temp = depthLimitedDFS(goalString, index);
+			index++;
+		}
+
+		return temp;
+
+	}
+
+	public List<String> iterativeDeepening_Path_Checking(String goalString) {
+
+		int index = 0;
+		List<String> temp = null;
+		while (temp == null) {
+			
+			temp = depthLimitedDFS_Path_Checking(goalString, index);
+			System.out.println(index);
+			index++;
+		}
+
+		return temp;
+
+	}
+
+	public List<String> depthLimitedDFS_Path_Checking(String target, int d) {
+		int comps = 0;
+		d = d + 2;
+		String start = "mi";
+		miu = new MIU();
+		boolean find = false;
+
+		List<List<String>> temp = extendPath(start);
+		List<String> visited = new ArrayList<String>();
+		// System.out.println("target  =  " + target);
+		if (start.equals(target)) {
+			find = true;
+
+		}
+		comps++;
+
+		while (!find) {
+			// System.out.println(temp.get(0).size());
+			// System.out.println(temp.toString() + d);
+			if (temp == null) {
+				return null;
+
+			} else {
+				if ((temp.size() == 0)) {
+					return null;
+				} else {
+					//System.out.println(comps);
+					if ((temp.get(0).size()) < d) {
+						if (visited.contains(temp.get(0).get(
+								temp.get(0).size() - 1))) {
+
+							temp.remove(0);
+						} else {
+							visited.add(temp.get(0).get(temp.get(0).size() - 1));
+
+							if (!temp.get(0).get(temp.get(0).size() - 1)
+									.equals(target)) {
+								
+								List<String> x = temp.get(0);
+								temp.remove(0);
+								temp.addAll(0, extendPath(x));
+								comps++;
+
+							} else {
+								find = true;
+								System.out.println("length of the path : "
+										+ temp.get(0).size());
+								System.out
+										.println("the number of times extendPath is called : "
+												+ comps);
+								System.out.println("size of the agenda : "
+										+ temp.size());
+								return temp.get(0);
+
+							}
+						}
+
+					}else {
+						temp.remove(0);
+					}
+				}
+			}
+		}
+		
+		return null;
+
+	}
 
 }
