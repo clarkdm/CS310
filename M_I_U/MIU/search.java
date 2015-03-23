@@ -209,7 +209,7 @@ public class search {
 		int index = 0;
 		List<String> temp = null;
 		while (temp == null) {
-			
+
 			temp = depthLimitedDFS_Path_Checking(goalString, index);
 			System.out.println(index);
 			index++;
@@ -228,6 +228,7 @@ public class search {
 
 		List<List<String>> temp = extendPath(start);
 		List<String> visited = new ArrayList<String>();
+		visited.add(start);
 		// System.out.println("target  =  " + target);
 		if (start.equals(target)) {
 			find = true;
@@ -245,18 +246,20 @@ public class search {
 				if ((temp.size() == 0)) {
 					return null;
 				} else {
-					//System.out.println(comps);
-					if ((temp.get(0).size()) < d) {
-						if (visited.contains(temp.get(0).get(
-								temp.get(0).size() - 1))) {
+					if (visited.contains(temp.get(0)
+							.get(temp.get(0).size() - 1))) {
 
-							temp.remove(0);
-						} else {
+						temp.remove(0);
+					} else {
+						System.out.println(temp.get(0).size()+ " : " +(temp.get(0).size() <d) + " : " +
+						 temp.size() + " : " +temp.get(0).get(temp.get(0).size() - 1));
+						if (temp.get(0).size() < d) {
+
 							visited.add(temp.get(0).get(temp.get(0).size() - 1));
 
 							if (!temp.get(0).get(temp.get(0).size() - 1)
 									.equals(target)) {
-								
+
 								List<String> x = temp.get(0);
 								temp.remove(0);
 								temp.addAll(0, extendPath(x));
@@ -274,15 +277,15 @@ public class search {
 								return temp.get(0);
 
 							}
-						}
 
-					}else {
-						temp.remove(0);
+						} else {
+							temp.remove(0);
+						}
 					}
 				}
 			}
 		}
-		
+
 		return null;
 
 	}
