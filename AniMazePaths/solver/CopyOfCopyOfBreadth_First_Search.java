@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Breadth_First_Search extends AbstractSolver {
+public class CopyOfCopyOfBreadth_First_Search extends AbstractSolver {
 
 	@Override
 	public List<Point> solve(int[][] maze, Point start, Point goal) {

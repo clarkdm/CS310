@@ -19,8 +19,10 @@ import model.Maze;
 import model.OriginalGenneratorWithStepping;
 import model.RandomEscapeDrunkWalk;
 import solver.Breadth_First_Search;
+
+import solver.CopyOfCopyOfBreadth_First_Search;
+import solver.First_Search;
 import solver.Solver;
-import solver.StupidSearch;
 import view.GridPanel;
 import data.PointPair;
 
@@ -28,9 +30,10 @@ public class PGMaze {
 	
 	private final Solver[] solvers = new Solver[] {
 		new Breadth_First_Search(),
-		new Breadth_First_Search(),
-		new Breadth_First_Search(),
-		new Breadth_First_Search()
+		new First_Search()
+		//,
+		//new First_Search(),
+		//new First_Search()
 	};
 	
 	private static final int TUNNELS = 500;

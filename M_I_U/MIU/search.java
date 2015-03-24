@@ -1,7 +1,9 @@
 package MIU;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 public class search {
 
@@ -9,13 +11,16 @@ public class search {
 		// TODO Auto-generated method stub
 		search test = new search();
 
-		String target = "miiuu";
+		String target = "miiiuii";
 
 		System.out.println("breadth First Search");
 		System.out.println(test.breadthFirstSearch(target));
 		System.out.println();
 		System.out.println("breadth First Search Path Checking");
 		System.out.println(test.breadthFirstSearch_Path_Checking(target));
+		System.out.println();
+		System.out.println("Depth lilited");
+		System.out.println(test.depthLimitedDFS_Path_Checking(target, 10));
 		System.out.println();
 		System.out.println("iterative Deepening");
 		System.out.println(test.iterativeDeepening(target));
@@ -219,7 +224,7 @@ public class search {
 		List<String> temp = null;
 		while (temp == null) {
 
-			temp = depthLimitedDFS_Path_Checking(goalString, 1);
+			temp = depthLimitedDFS_Path_Checking(goalString, index);
 			// System.out.println(index);
 			index++;
 		}
@@ -235,9 +240,11 @@ public class search {
 		miu = new MIU();
 		boolean find = false;
 
-		List<List<String>> temp = extendPath(start);
+		Stack<List<String>> agenda = new Stack<List<String>>();
 		List<String> visited = new ArrayList<String>();
-
+		List<String> path = new LinkedList<String>();
+		path.add(start);
+		agenda.push(path);
 		// System.out.println("target  =  " + target);
 		if (start.equals(target)) {
 			find = true;
@@ -245,59 +252,86 @@ public class search {
 		}
 		d_l_comps++;
 
-		while (!find) {
-			// System.out.println(temp.get(0).size());
-			// System.out.println(temp.toString() + d);
-			if (temp == null) {
-				return null;
-
+		while (!agenda.isEmpty()) {
+			path = agenda.pop();
+			String last = path.get(path.size()-1);
+			visited.add(last);
+			if(last.equals(target)) {
+				System.out.println("length of the path : "+ path.size());
+				System.out.println("the number of times extendPath is called : "+ d_l_comps);
+				System.out.println("size of the agenda : "+ agenda.size());
+				
+				
+				return path;
 			} else {
-				if ((temp.size() == 0)) {
-					return null;
-				} else {
-					if (temp.get(0).size() < d) {
-						String valu = temp.get(0).get(temp.get(0).size() - 1);
-						if (visited.contains(valu)) {
-
-							temp.remove(0);
-						} else {
-							// System.out.println(valu+temp.get(0).size());
-
-							visited.add(valu);
-
-							if (!valu.equals(target)) {
-
-								List<String> x = temp.get(0);
-
-								temp.remove(0);
-								temp.addAll(0, extendPath(x));
-								d_l_comps++;
-
-							} else {
-								find = true;
-								System.out.println("length of the path : "
-										+ temp.get(0).size());
-								System.out
-										.println("the number of times extendPath is called : "
-												+ d_l_comps);
-								System.out.println("size of the agenda : "
-										+ temp.size());
-								return temp.get(0);
-
-							}
-
+				if(path.size() < d) {
+					List<List<String>> e = extendPath(path);
+					d_l_comps++;
+					for(List<String> path2 : e) {
+						String last2 = path2.get(path2.size()-1);
+						if(!visited.contains(last2) && !hasDuplicate(path2, last2)) {
+							agenda.push(path2);
 						}
-					} else {
-
-						temp.remove(0);
 					}
 				}
 			}
+			// System.out.println(temp.get(0).size());
+			// System.out.println(temp.toString() + d);
+//			if (temp == null) {
+//				return null;
+//
+//			} else {
+//				if ((temp.size() == 0)) {
+//					return null;
+//				} else {
+//					if (temp.get(0).size() < d) {
+//						String valu = temp.get(0).get(temp.get(0).size() - 1);
+//						if (visited.contains(valu)) {
+//
+//							temp.remove(0);
+//						} else {
+//							// System.out.println(valu+temp.get(0).size());
+//
+//							visited.add(valu);
+//
+//							if (!valu.equals(target)) {
+//
+//								List<String> x = temp.remove(0);
+//								temp.addAll(0, extendPath(x));
+//								d_l_comps++;
+//
+//							} else {
+//								find = true;
+//								System.out.println("length of the path : "
+//										+ temp.get(0).size());
+//								System.out
+//										.println("the number of times extendPath is called : "
+//												+ d_l_comps);
+//								System.out.println("size of the agenda : "
+//										+ temp.size());
+//								return temp.get(0);
+//
+//							}
+//
+//						}
+//					} else {
+//
+//						temp.remove(0);
+//					}
+//				}
+//			}
 
 		}
 
 		return null;
 
+	}
+
+	private boolean hasDuplicate(List<String> path2, String last2) {
+		if (path2.indexOf(last2) < (path2.size()-1)) {
+			return true;
+		}
+		return false;
 	}
 
 }
