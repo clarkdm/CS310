@@ -31,7 +31,7 @@ public class PGMaze {
 	
 	private final Solver[] solvers = new Solver[] {
 		new Breadth_First_Search(),
-		new Best_First_Search()
+		new Breadth_First_Search()
 		,new Best_First_Search()
 		,new Best_First_Search()
 	};
