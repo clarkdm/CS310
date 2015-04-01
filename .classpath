@@ -2,6 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="M_I_U"/>
 	<classpathentry kind="src" path="AniMazePaths"/>
+	<classpathentry kind="src" path="2048"/>
+	<classpathentry kind="src" path="PACMAN"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
