@@ -62,11 +62,9 @@ public class First_Search extends AbstractSolver {
 	}
 
 	private int get_h(Point temp, Point goal) {
-		double x = goal.getX() - temp.getX();
-		double y = goal.getY() - temp.getY();
-		if (y < 0) {
-			y = -y;
-		}
+		int x = (int) (goal.getX() - temp.getX());
+		int y = (int) (goal.getY() - temp.getY());
+		
 //		System.out.println(x + " : " + y + " : " + (x + y));
 
 		return (int) (x + y);
