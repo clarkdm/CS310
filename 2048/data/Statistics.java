@@ -1,6 +1,9 @@
 package data;
 
 import java.awt.Point;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -11,6 +14,7 @@ import java.util.concurrent.Future;
 
 import model.AbstractState.MOVE;
 import model.BinaryState;
+import ai.CopyOfRandomAI;
 import ai.GreedyPlayerEval;
 import ai.Player;
 
@@ -115,8 +119,17 @@ public class Statistics {
 		return sb.toString();
 	}
 	
+	
+	
+	 
+	
+	
+	
+	
+	
 	public static void main (String[] args) {
-		Statistics s = new Statistics(100000, new GreedyPlayerEval());
+		Statistics s = new Statistics(200000, new CopyOfRandomAI());
+//		Statistics s = new Statistics(500, new GreedyPlayerEval());
 		s.begin();
 		System.out.println(s);
 //		FileWriter results = null;
@@ -129,4 +142,9 @@ public class Statistics {
 //			e.printStackTrace();
 //		}
 	}
+	
+	
+
+	
+	
 }

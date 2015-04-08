@@ -8,6 +8,7 @@ import model.AbstractState.MOVE;
 import model.State;
 import eval.Evaluator;
 import eval.ScoreEvaluator;
+import eval.ScoreEvaluator_2;
 
 public class GreedyPlayerEval extends AbstractPlayer {
 	

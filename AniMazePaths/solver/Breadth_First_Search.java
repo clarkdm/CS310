@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class Breadth_First_Search extends AbstractSolver {
 
 	@Override
@@ -26,8 +27,6 @@ public class Breadth_First_Search extends AbstractSolver {
 			if (current.equals(goal)) {
 				return path;
 			}
-			// System.out.println(current);
-
 			for (Point neighbour : getNeighbours(current, maze)) {
 				if (!path.contains(neighbour)) {
 					if (!visited.contains(neighbour)) {

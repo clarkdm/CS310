@@ -22,7 +22,7 @@ import solver.Best_First_Search;
 import solver.Breadth_First_Search;
 
 
-import solver.First_Search;
+import solver.Best_First_Search_2;
 import solver.Solver;
 import view.GridPanel;
 import data.PointPair;
@@ -30,13 +30,17 @@ import data.PointPair;
 public class PGMaze {
 	
 	private final Solver[] solvers = new Solver[] {
-		new Breadth_First_Search(),
-		new Breadth_First_Search()
-		,new Best_First_Search()
-		,new Best_First_Search()
+//		new Breadth_First_Search(),
+
+		
+			new Best_First_Search(),new Best_First_Search(),new Best_First_Search()
+			,new Best_First_Search_2(),new Best_First_Search_2(),new Best_First_Search_2()
+		
+		
 	};
 	
 	private static final int TUNNELS = 500;
+//	private static final int TUNNELS = 750;
 	
 	private final Random rng = new Random();
 	private int width;
@@ -53,8 +57,12 @@ public class PGMaze {
 	public PGMaze(String[] args) {
 		
 		// DEFAULTS
+//		width = 50;
+//		height = 50;
 		width = 100;
 		height = 100;
+//		width = 150;
+//		height = 150;
 		gen = 4;
 		anim = 0; // set to -1 for no animation
 		
