@@ -128,19 +128,19 @@ public class Statistics {
 	
 	
 	public static void main (String[] args) {
-		Statistics s = new Statistics(200000, new CopyOfRandomAI());
+		Statistics s = new Statistics(100, new CopyOfRandomAI());
 //		Statistics s = new Statistics(500, new GreedyPlayerEval());
 		s.begin();
 		System.out.println(s);
-//		FileWriter results = null;
-//		try {
-//			results = new FileWriter(new File("1000000_nt.txt"), false);
-//			results.write(s.toString());
-//			results.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		FileWriter results = null;
+		try {
+			results = new FileWriter(new File("1000000_nt.txt"), false);
+			results.write(s.toString());
+			results.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

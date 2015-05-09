@@ -6,77 +6,386 @@ public class ScoreEvaluator_2 implements Evaluator {
 
 	@Override
 	public double evaluate(State state) {
-		int score = 12;
-		// System.out.println(state.getValue(0, 0) + " " + state.getValue(1, 0)
-		// + " " + state.getValue(2, 0) + " " + state.getValue(3, 0));
-		// System.out.println(state.getValue(0, 1) + " " + state.getValue(1, 1)
-		// + " " + state.getValue(2, 1) + " " + state.getValue(3, 1));
-		// System.out.println(state.getValue(0, 2) + " " + state.getValue(1, 2)
-		// + " " + state.getValue(2, 2) + " " + state.getValue(3, 2));
-		// System.out.println(state.getValue(0, 3) + " " + state.getValue(1, 3)
-		// + " " + state.getValue(2, 3) + " " + state.getValue(3, 3));
-//		 System.out.println(state.toString());
-		int x = 3;
-		int y = 3;
-		for (int xi = 0; xi < x; xi++) {
-			for (int yi = 0; yi < y; yi++) {
+		int score = 0;
 
-				int val = 0;
-				if (val != 0) {
-
-					if (x > 0) {
-						if (state.getValue(x - 1, y) == 2) {
-							score = score + 1;
-						}
-					}
-					if (y > 0) {
-						if (state.getValue(x, y - 1) == 2) {
-							score = score + 1;
-						}
-					}
-					if (x < 3) {
-						if (state.getValue(x + 1, y) == 2) {
-							score = score + 1;
-						}
-					}
-					if (y < 3) {
-						if (state.getValue(x, y + 1) == 2) {
-							score = score + 1;
-
-						}
-
-					}
-
-				}
-
-//				if (x > 0) {
-//					if (state.getValue(x - 1, y) == val) {
-//						score = score-1 + val*2;
-//					}
-//				}
-//				if (y > 0) {
-//					if (state.getValue(x, y - 1) == val) {
-//						score = score-1 + val*2;
-//					}
-//				}
-//				if (x < 3) {
-//					if (state.getValue(x + 1, y) == val) {
-//						score = score-1 + val*2;
-//					}
-//				}
-//				if (y < 3) {
-//					if (state.getValue(x, y + 1) == val) {
-//						score = score-1 + val*2;
-//
-//					}
-//				}
-
-				
-				score--;
-				
+		int temp = 0;
+		int x = 0;
+		int y = 0;
+		
+		// 1
+		x = 0;
+		y = 0;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				// score = score + (temp + 1);
 			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+//		//up
+//			if (temp == state.getValue(x, y - 1)) {
+//				score = score + (temp + 1);
+//			}
+//		//left
+//			if (temp == state.getValue(x - 1, y)) {
+//				score = score + (temp + 1);
+//			}
+		} else {
+			//  score = score + 1;
 		}
-		 System.out.println(score);
-		return score;
+		// 2
+		x = 1;
+		y = 0;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+//		//up
+//			if (temp == state.getValue(x, y - 1)) {
+//				score = score + (temp + 1);
+//			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}
+		x = 2;
+		y = 0;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+//		//up
+//			if (temp == state.getValue(x, y - 1)) {
+//				score = score + (temp + 1);
+//			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}
+		// 3
+		x = 3;
+		y = 0;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+//		//right
+//			if (temp == state.getValue(x + 1, y)) {
+//				score = score + (temp + 1);
+//			}
+//		//up
+//			if (temp == state.getValue(x, y - 1)) {
+//				score = score + (temp + 1);
+//			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}
+		// 4
+		x = 0;
+		y = 1;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+//		//left
+//			if (temp == state.getValue(x - 1, y)) {
+//				score = score + (temp + 1);
+//			}
+		} else {
+			//  score = score + 1;
+		}x = 0;
+		y = 2;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+//		//left
+//			if (temp == state.getValue(x - 1, y)) {
+//				score = score + (temp + 1);
+//			}
+		} else {
+			//  score = score + 1;
+		}
+		// 5
+		x = 0;
+		y = 3;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+//		//down
+//			if (temp == state.getValue(x, y + 1)) {
+//				score = score + (temp + 1);
+//			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+//		//left
+//			if (temp == state.getValue(x - 1, y)) {
+//				score = score + (temp + 1);
+//			}
+		} else {
+			//  score = score + 1;
+		}
+		// 6
+		x = 1;
+		y = 3;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+//		//down
+//			if (temp == state.getValue(x, y + 1)) {
+//				score = score + (temp + 1);
+//			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}x = 2;
+		y = 3;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+//		//down
+//			if (temp == state.getValue(x, y + 1)) {
+//				score = score + (temp + 1);
+//			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}
+		// 7
+		x = 3;
+		y = 3;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+//		//down
+//			if (temp == state.getValue(x, y + 1)) {
+//				score = score + (temp + 1);
+//			}
+//		//right
+//			if (temp == state.getValue(x + 1, y)) {
+//				score = score + (temp + 1);
+//			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}
+		// 8
+		x = 3;
+		y = 1;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+//		//right
+//			if (temp == state.getValue(x + 1, y)) {
+//				score = score + (temp + 1);
+//			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}x = 3;
+		y = 2;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+//		//right
+//			if (temp == state.getValue(x + 1, y)) {
+//				score = score + (temp + 1);
+//			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}
+		// 9
+		x = 1;
+		y = 1;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}x = 2;
+		y = 1;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}x = 1;
+		y = 2;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}x = 2;
+		y = 2;
+		temp = state.getValue(x, y);
+		if (temp != 0) {
+		//down
+			if (temp == state.getValue(x, y + 1)) {
+				score = score + (temp + 1);
+			}
+		//right
+			if (temp == state.getValue(x + 1, y)) {
+				score = score + (temp + 1);
+			}
+		//up
+			if (temp == state.getValue(x, y - 1)) {
+				score = score + (temp + 1);
+			}
+		//left
+			if (temp == state.getValue(x - 1, y)) {
+				score = score + (temp + 1);
+			}
+		} else {
+			//  score = score + 1;
+		}
+		return score + state.getScore();
 	}
 }
+
+
+
