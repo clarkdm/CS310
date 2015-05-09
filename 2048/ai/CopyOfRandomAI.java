@@ -55,6 +55,10 @@ public class CopyOfRandomAI extends AbstractPlayer {
 		
 		if (bestMoves.size() == 0) {
 			return game.getMoves().get(0);
+		}else if (bestMoves.toString().contains("UP") && bestMoves.toString().contains("DOWN")) {
+			return MOVE.DOWN;
+		}else if (bestMoves.toString().contains("RIGHT") && bestMoves.toString().contains("LEFT")) {
+			return MOVE.LEFT;
 		}
 
 		

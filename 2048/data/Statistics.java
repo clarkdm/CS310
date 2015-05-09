@@ -128,7 +128,7 @@ public class Statistics {
 	
 	
 	public static void main (String[] args) {
-		Statistics s = new Statistics(100, new CopyOfRandomAI());
+		Statistics s = new Statistics(1000, new CopyOfRandomAI());
 //		Statistics s = new Statistics(500, new GreedyPlayerEval());
 		s.begin();
 		System.out.println(s);
