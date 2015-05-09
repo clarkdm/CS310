@@ -1,6 +1,6 @@
 100
-Mean:               20248.176
-Standard deviation: 8342.172586144694
-Highest score:      51012
+Mean:               21319.176
+Standard deviation: 8266.650658702352
+Highest score:      50636
 Highest tile:       4096
-Tile counts:        |0|0|0|0|0|0|0|6|78|517|398|1|0|0|0|
+Tile counts:        |0|0|0|0|0|0|0|4|62|455|478|1|0|0|0|
