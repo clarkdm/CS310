@@ -1,6 +1,7 @@
 package pacman.controllers;
 
 import java.awt.event.KeyEvent;
+
 import pacman.game.Game;
 import pacman.game.Constants.MOVE;
 
@@ -23,6 +24,8 @@ public class HumanController extends Controller<MOVE>
 
     public MOVE getMove(Game game,long dueTime)
     {
+    	int currentNodeIndex = game.getPacmanCurrentNodeIndex();
+		System.out.println(currentNodeIndex);
     	switch(input.getKey())
     	{
 	    	case KeyEvent.VK_UP: 	return MOVE.UP;

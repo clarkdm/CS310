@@ -14,7 +14,7 @@ import java.util.concurrent.Future;
 
 import model.AbstractState.MOVE;
 import model.BinaryState;
-import ai.CopyOfRandomAI;
+import ai.DavidClark2048;
 import ai.GreedyPlayerEval;
 import ai.Player;
 
@@ -128,8 +128,8 @@ public class Statistics {
 	
 	
 	public static void main (String[] args) {
-		Statistics s = new Statistics(1000, new CopyOfRandomAI());
-//		Statistics s = new Statistics(500, new GreedyPlayerEval());
+//		Statistics s = new Statistics(1000, new DavidClark2048());
+		Statistics s = new Statistics(500, new GreedyPlayerEval());
 		s.begin();
 		System.out.println(s);
 		FileWriter results = null;

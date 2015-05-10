@@ -35,6 +35,6 @@ public class NearestPillPacMan extends Controller<MOVE>
 			targetNodeIndices[activePills.length+i]=activePowerPills[i];		
 		
 		//return the next direction once the closest target has been identified
-		return game.getNextMoveTowardsTarget(game.getPacmanCurrentNodeIndex(),game.getClosestNodeIndexFromNodeIndex(currentNodeIndex,targetNodeIndices,DM.PATH),DM.PATH);	
+		return game.getNextMoveTowardsTarget(currentNodeIndex,game.getClosestNodeIndexFromNodeIndex(currentNodeIndex,targetNodeIndices,DM.PATH),DM.PATH);	
 	}
 }
